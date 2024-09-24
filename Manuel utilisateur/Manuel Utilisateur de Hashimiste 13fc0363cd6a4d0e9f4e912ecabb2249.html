@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Manuel Utilisateur de Hashimiste</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13fc0363-cd6a-4d0e-9f4e-912ecabb2249" class="page sans"><header><h1 class="page-title">Manuel Utilisateur de Hashimiste</h1><p class="page-description"></p></header><div class="page-body"><h2 id="cd098a0e-6601-4f9a-b225-e4bf34b85bfa" class="">Sommaire</h2><ol type="1" id="589d6bc1-82f5-4931-b48e-10f5e28ae35b" class="numbered-list" start="1"><li>Introduction</li></ol><ol type="1" id="3bbb0d88-18b6-47d9-8bc3-845175528423" class="numbered-list" start="2"><li>Configuration requise<ol type="a" id="72e0761e-4ffa-4640-82a1-7d2bb285018c" class="numbered-list" start="1"><li>Windows</li></ol><ol type="a" id="480f87d4-19c9-41f7-afcf-090afc24dd18" class="numbered-list" start="2"><li>Linux, Mac</li></ol></li></ol><ol type="1" id="53f6366f-f102-44d1-8d53-a972c04fedd3" class="numbered-list" start="3"><li>Installation du jeu</li></ol><ol type="1" id="538c51f0-99de-4293-bde9-a6b09d03c777" class="numbered-list" start="4"><li>Démarrage du jeu</li></ol><ol type="1" id="77cea135-b500-4f86-b9ab-f643ff603e80" class="numbered-list" start="5"><li>Règles du jeu</li></ol><ol type="1" id="2be8e8a0-442f-49e8-8945-95454bb2cd6b" class="numbered-list" start="6"><li>Commandes de jeu</li></ol><ol type="1" id="28a2691a-3ad9-4451-bcbf-c9d148138380" class="numbered-list" start="7"><li>Navigation dans le jeu<ol type="a" id="80878ed6-3ae6-43be-979f-1fb1bccde3db" class="numbered-list" start="1"><li>Création/Chargement d’un profil</li></ol><ol type="a" id="61cddc9a-39bf-4126-af5f-3704fbfac03c" class="numbered-list" start="2"><li>Aventure</li></ol><ol type="a" id="e82f8b0a-3232-4992-af63-96fb967ba7f8" class="numbered-list" start="3"><li><del>Tutoriel</del></li></ol><ol type="a" id="effe94ed-73e4-4ffd-aa38-85f3d8cb6cd6" class="numbered-list" start="4"><li>Mode Libre</li></ol><ol type="a" id="1d9d14ec-f002-4af4-8f9f-5159bd97c93d" class="numbered-list" start="5"><li><del>Multijoueur</del></li></ol><ol type="a" id="e3bf99ff-8407-4063-a3d5-bcf6dbfabad3" class="numbered-list" start="6"><li>Technique</li></ol><ol type="a" id="777ee50e-2226-4aa8-b83b-51c5fec90dcc" class="numbered-list" start="7"><li>Paramètre</li></ol></li></ol><ol type="1" id="6d1b0f01-c019-44e6-ba54-cb3429817438" class="numbered-list" start="8"><li>En partie<ol type="a" id="ddc498de-7df8-4e77-a53e-7435ffe6b4ff" class="numbered-list" start="1"><li>Ajout et suppression de pont</li></ol><ol type="a" id="05a02df8-5537-4833-85d2-0b45d3f708bb" class="numbered-list" start="2"><li>Aide</li></ol><ol type="a" id="c733142e-80ec-406c-a1e9-f39d50a65643" class="numbered-list" start="3"><li>Vérification</li></ol><ol type="a" id="ff7850ad-dfb4-49a4-b722-a7805cb7f39d" class="numbered-list" start="4"><li>Retour</li></ol></li></ol><ol type="1" id="90e5579e-326e-4a05-82c7-d6f44eb2755e" class="numbered-list" start="9"><li>FAQ<ol type="a" id="fa27a3c4-04d6-45ac-b4e7-d8ca0caffa59" class="numbered-list" start="1"><li>Progrès et sauvegarde</li></ol></li></ol><p id="a739a3c9-ad0f-45b6-9245-274543cf6d36" class="">
+</p><h2 id="bf5ddf4a-c68a-4c4e-8fa1-91b4a97446bc" class="">Introduction :</h2><p id="100b4832-7bba-49d3-92b0-4cbcdbc29c45" class="">Bienvenue dans Hashimiste, un jeu de puzzle stimulant où vous devez connecter toutes les îles par des ponts selon certaines règles. Ce manuel vous aidera à naviguer dans le jeu et à découvrir des stratégies pour résoudre les puzzles.</p><h2 id="96080b71-2ec4-494c-8c26-4ae62829bb39" class="">Configuration Requise :</h2><h3 id="51b76def-685c-4e2a-bb87-bb09dba280f0" class="">Windows :</h3><ul id="2cce818b-6637-4323-b668-14d4b7373919" class="bulleted-list"><li style="list-style-type:disc"><strong>Version : </strong>Avoir une version de Windows supérieure ou égale à Windows XP.</li></ul><ul id="0047ea5e-d518-4559-90f2-11644dbc0efb" class="bulleted-list"><li style="list-style-type:disc"><strong>Java :</strong> Avoir Java 8.</li></ul><h3 id="0427daeb-15db-4887-a5e5-c202fa382492" class="">Linux/Mac : </h3><p id="ad5fef51-b940-45b6-9313-4cc51ccaef9c" class="">Pour Mac : </p><ul id="70991b72-c6e6-4a42-b1a0-4f12df35e4a9" class="bulleted-list"><li style="list-style-type:disc"><strong>Version :</strong> Avoir une version de macOS 10.7.3 (Lion) ou ultérieure.</li></ul><ul id="465cc16d-e70f-4aaf-9f0e-a86ad2604a0a" class="bulleted-list"><li style="list-style-type:disc"><strong>Java :</strong> Avoir Java 8.</li></ul><p id="49ade284-5d7f-4dca-8726-e783b7c68731" class="">Pour Linux : </p><ul id="ba6a99c0-2abd-4b7e-8e96-e85a897e87dc" class="bulleted-list"><li style="list-style-type:disc"><strong>Noyau Linux</strong> : Version 2.6.32 ou ultérieure.</li></ul><ul id="8aca76a2-bf69-4c5c-979a-83d87c257487" class="bulleted-list"><li style="list-style-type:disc"><strong>Bibliothèques</strong> : glibc 2.12 ou supérieur.</li></ul><ul id="faaef392-fa6e-42f8-b003-4e42818a41c8" class="bulleted-list"><li style="list-style-type:disc"><strong>Java :</strong> Avoir Java 8.</li></ul><p id="1695ae7a-1106-4a74-826f-771e05166535" class="">
+</p><h2 id="d0a22911-22b9-42b7-945b-9029ba4a93eb" class="">Installation du jeu :</h2><p id="7fc46cab-c551-496c-bd3c-6d88efba3c60" class="">Lors de l’installation du jeu, il sera nécessaire d’avoir java 8 d’installé sur sa machine : <a href="https://www.java.com/fr/download/">https://www.java.com/fr/download/</a></p><p id="6b446e1d-9ae0-42dc-b676-682c95dcce56" class="">Si java 8 est bien installé sur la machine, il reste plus qu’à télécharger le jeu :</p><p id="04e3afe7-d4cc-4cb3-9a64-1f669b0e2e68" class=""><a href="https://drive.google.com/file/d/1QgdECVEMzMarRNGMTbvn2mMZUYFxkEro/view?usp=drive_link">https://drive.google.com/file/d/1QgdECVEMzMarRNGMTbvn2mMZUYFxkEro/view?usp=drive_link</a></p><p id="2a633f4e-e9b9-44f9-aba5-990bea814fd1" class="">Après avoir installé le jeu, vous devez simplement double-cliquer sur le .jar.</p><figure id="49f4383d-06a3-4a01-8b67-c4fd3077d6f6" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled.png"><img style="width:349px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled.png"/></a></figure><h2 id="4781e585-27db-4ae4-83c3-d1877ca8e0c7" class="">Démarrage du jeu :</h2><p id="d79dec34-44c1-41fd-9661-cf8ba68ec541" class="">Après avoir créé ou sélectionné votre profil, pour démarrer une partie, vous devez sélectionner un mode de jeu (vous pouvez aller voir les techniques mises à disposition avant). Ensuite, vous devez, selon les différents modes de jeux, soit charger une partie déjà commencée ou bien sélectionner la difficulté de la grille sur laquelle vous souhaitez jouer. Par exemple, en mode aventure, les grilles sont déjà générées, donc vous ne pouvez pas les modifier.</p><p id="694afed0-4715-4279-a44e-cf5debabb891" class="">Puis une grille va apparaître et vous devez, à l’aide des commandes, compléter la grille tout en respectant les règles du jeu expliquées ci-dessous.</p><h2 id="a4b20f49-36c3-41a9-8dcb-bcf67145c418" class="">Règles du jeu :</h2><p id="904e762c-16be-44ec-9273-cc82fd043b69" class="">Dans le jeu, chaque île doit être connectée aux autres par un certain nombre de ponts, qui est indiqué sur l&#x27;île elle-même par un chiffre situé entre 1 et 8. Les ponts ne peuvent traverser ni les îles, ni les autres ponts, et tous les ponts doivent former un chemin continu entre toutes les îles.</p><h2 id="a9199e25-3793-4beb-8ea6-2d9bd033e47a" class="">Commandes de jeu :</h2><p id="af32628c-e566-4880-ac93-b0fc2fc663ba" class="">Afin de jouer au jeu, vous devez connaître que très peu de commandes. Ces commandes sont la pose d’un ou de deux ponts, la suppression des ponts et la visualisation des ponts possibles.</p><p id="ed010a3e-2082-430c-98a6-de69052e80a9" class="">Pour la pose des ponts, en survolant l’espace entre deux îles, un pont semi-transparent apparaît. Avec un clic gauche dessus, vous créez ce pont. En cliquant une seconde fois dessus, vous créez un deuxième pont au même endroit.</p><p id="3fe452e0-b8b7-47de-bbe3-08e59695fde5" class="">Pour supprimer les ponts, il suffit d’interagir avec un double pont pour le supprimer à l’aide d’un clic gauche.</p><p id="d357834d-fb4c-4e2f-bfb3-768381277c3a" class="">Concernant la visualisation des ponts, en survolant une île, vous voyez les ponts pouvant être créés. </p><h2 id="6381b673-abd6-4ec1-a294-fe21ad4ed98a" class="">Navigation dans le jeu :</h2><h3 id="a9c69454-8fbd-4afe-b360-186dc5e700cb" class="">Création/Chargement du profil :</h3><p id="82b00459-5659-4b61-8adb-0d10f63a6c98" class="">Dans cette section, vous pouvez créer un nouveau profil ou charger un profil existant. Votre progression dans le jeu sera enregistrée sous le profil que vous utilisez.</p><figure id="9cfcd0c2-be03-462b-88e0-c09691f5b77a" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Sans_titre.png"><img style="width:605px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Sans_titre.png"/></a></figure><p id="0ed26f04-fc3b-4e02-b6de-951ee9a0bca6" class="">Dans le premier cas, vous possédez déjà un profil, vous avez juste à cliquer dessus pour reprendre votre compte.<br/>Dans le second cas, vous ne possédez pas de profil ou vous souhaitez en créer un nouveau, vous devez donc cliquer sur le bouton “+” et saisir un nom de profil dans la zone de texte indiquée.<br/></p><figure id="8834c518-9249-4fae-aafb-89ae62b53e56" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%201.png"><img style="width:604px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%201.png"/></a></figure><p id="7f54a9dd-bb0e-4d15-b4f5-622c11d1c5f7" class="">Après avoir saisi votre nom de profil, vous devez cliquer sur le bouton “OK”. Vous n’avez plus qu’à suivre le premier cas en cliquant sur votre profil pour pouvoir reprendre votre compte.</p><h3 id="aa55a1bb-7eb9-46a9-8f4f-12aa5ffa702d" class="">Aventure :</h3><p id="7510f594-6d1e-4eb5-b24b-db314305eac4" class="">Dans le mode Aventure, vous suivez une série de niveaux avec une difficulté croissante. Chaque niveau présente un nouveau défi à relever.</p><p id="e5fc98ff-3f21-486d-bd29-7e477bb08698" class="">Tout d’abord, vous devez cliquer sur le bouton “Aventure”.</p><figure id="69688f9f-068b-4512-88bc-1c64eb739260" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%202.png"><img style="width:165px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%202.png"/></a></figure><p id="883abbd9-6264-4922-9221-6109aec5cd5e" class="">Puis cliquer sur le niveau disponible selon votre avancement.</p><figure id="3f544ed5-03da-4048-af5b-b83cec1f5d4c" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%203.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%203.png"/></a></figure><h3 id="4218ca4c-fd28-49bd-86d7-c5ff38020549" class="">Mode Libre :</h3><p id="959ec994-9b7f-4eb5-8530-5d576f487a12" class="">Dans le mode Libre, vous pouvez choisir parmi une variété de puzzles à résoudre à votre rythme. Il n&#x27;y a pas de restrictions de temps ou de niveau dans ce mode.</p><p id="95d460d6-1add-4623-802d-a7724e6c3add" class="">Tout d’abord, vous devez cliquer sur le bouton “Mode libre”.</p><figure id="6410791d-c464-463f-bb8b-9e5124b94af1" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%204.png"><img style="width:132px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%204.png"/></a></figure><p id="36077bc0-6f16-4da9-9a38-1b83649c3041" class=""><br/>Vous avez le choix entre trois modes de difficultés, Facile, Moyen et Difficile. <br/></p><figure id="cf04f1ef-a53f-4452-89ef-ae3c69843c0d" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%205.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%205.png"/></a></figure><p id="af74590e-11c9-4cdb-9edf-fb4b91d5a5e1" class="">En passant la souris sur une carte, cela donne des informations comme la taille, le nombre de parties jouer, le meilleur temps etc.</p><p id="1f3f7430-7293-4927-9739-cf962c430698" class="">Vous avez plus qu’à cliquer sur l’une des cartes pour lancer une partie.</p><h3 id="0981283d-9281-4f1d-8c32-4ba221492772" class="">Technique :</h3><p id="fbe83235-4c69-4afc-8734-9f6582c31d56" class="">Dans la section Technique, vous pouvez voir différentes techniques pour avancer dans le jeu.</p><figure id="c816bd4e-fcae-4c58-a044-1b3f562f1537" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%206.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%206.png"/></a></figure><p id="1f511b7a-c337-42d4-ab6b-a2523a739102" class="">Vous avez juste à cliquer sur l’une des techniques, allant de la plus simple à la plus avancée. Nous conseillons au débutant d’aller voir seulement les premières techniques lors de leurs premières parties.</p><h3 id="64986a14-6305-4e46-937b-1a09f117be77" class="">Paramètres :</h3><p id="1680e1c0-d1c5-4bf6-9c5f-9cd990ea24a2" class="">Dans la section Paramètres, vous pouvez changer le thème du jeu selon vos préférences.</p><figure id="d178763d-53c6-4305-921d-507a1cc96575" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%207.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%207.png"/></a></figure><p id="ff3d83bc-7b3d-41dc-983d-162e60246250" class="">Après avoir choisi le thème souhaitez, il faut cliquer sur le bouton “Sauvegarder” en bas à droite de la fenêtre de jeu. ( Actuellement, le thème choisit est le thème “Candy” )</p><h2 id="24d4d785-b819-47e9-90f9-550809b3397d" class="">En partie :</h2><h3 id="73699ac0-ae7a-4d1c-8009-fa07ab0f0804" class="">Ajout et suppression de pont :</h3><p id="96ff1203-66ed-403d-969d-936265cd7923" class="">Lors de vos parties, vous devez poser ou supprimer des ponts pour pouvoir résoudre le niveau. </p><figure id="bc4ac187-28ed-4192-9d90-c5fd6d81cba6" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%208.png"><img style="width:307px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%208.png"/></a></figure><p id="3bd102ea-26d1-4f67-9f3a-b5c682bf25e7" class="">En passant la souris entre deux iles, un pont en surbrillance indique que vous pouvez poser un pont en faisant clic gauche.</p><figure id="559b499c-bf83-40d9-b6e4-71de89d3f58b" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%209.png"><img style="width:278px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%209.png"/></a></figure><p id="dc85a9a7-4a89-4bf6-a5f7-8d2cdefada96" class="">Vous pouvez rajouter un deuxième pont en faisant de nouveau un clic gauche.</p><figure id="19683afa-1b05-4b91-885c-1c658957bf25" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2010.png"><img style="width:279px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2010.png"/></a></figure><p id="80773875-e894-481e-a960-56072acd271b" class="">Puis, si vous souhaitez enlever un pont, vous avez juste à faire un clic droit.</p><h3 id="985baf3f-e109-46c7-ae0f-76c83f78e136" class="">Progrès et sauvegarde :</h3><p id="2e2d59c5-21fa-4a59-b8b5-a14a91cd8bcc" class="">Lors d’une partie, vous pouvez choisir de faire une sauvegarde pour reprendre votre partie actuelle plus tard.</p><figure id="a5da8b98-aae3-4a03-a2a4-08093cd42d64" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2011.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2011.png"/></a></figure><p id="0297f9b4-a7a7-44b0-8064-5d2590751548" class="">Vous devez cliquer sur le bouton “Sauvegarder”, une fenêtre va s’ouvrir.</p><figure id="090f3ff1-12d2-4d3d-a9ec-ac5965b6ba9f" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2012.png"><img style="width:339px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2012.png"/></a></figure><p id="6f91a4cd-03fa-4988-bcfb-3481d60cc513" class="">Vous devez maintenant rentrer un nom de sauvegarde puis cliquer sur “OK”.</p><p id="7da2124a-c5cc-45ed-9019-f1364b9eb73a" class="">Vous pouvez aussi choisir de faire une sauvegarde rapide dites “Checkpoint”.</p><figure id="f19f5c84-73e9-451e-a636-fff887d163b4" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2013.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2013.png"/></a></figure><p id="979f26a9-3ec2-47bc-bb1f-fafde5baf968" class="">Vous avez juste à cliquer sur le bouton “Checkpoint”.</p><p id="de64bf2e-db53-47e0-a634-781f3ea7a4b8" class="">
+</p><p id="5784b826-caac-449b-904b-84f48feca6e2" class="">Par la suite, si vous souhaitez reprendre votre Sauvegarde ou votre checkpoint, vous devez cliquer sur le bouton Charger.</p><figure id="77762f4f-6c1c-4943-8b41-4dbdc9a1a0b6" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2014.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2014.png"/></a></figure><p id="311548f6-7485-43b7-b130-7c519ed623fa" class="">Ensuite, vous aurez une fenêtre vous demandant quelle sauvegarde choisir.</p><figure id="537034ff-e9ad-47e2-87bc-deaf5d4e9075" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2015.png"><img style="width:333px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2015.png"/></a></figure><p id="0ba3969e-52e3-4209-bd4e-4e04eb95154a" class="">Choisissez la sauvegarde que vous souhaitez reprendre puis vous cliquez sur le bouton “OK”.</p><figure id="b0b35366-e48a-4961-ad03-9d45d8e7802f" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2016.png"><img style="width:326px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2016.png"/></a></figure><h3 id="4dec6c85-fa57-4f5d-806c-c3d6ccf6095a" class="">Aide :</h3><p id="a2c7a924-abf0-43db-b44d-939a9040312a" class="">Pour avoir de l’aide, vous devez cliquer sur le bouton “Aide”.</p><figure id="2db3e52d-49b2-43b6-982d-840f7e6c6f37" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2017.png"><img style="width:598px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2017.png"/></a></figure><p id="766894ca-99e5-4105-aa81-866f524bae4d" class="">Puis une boite de dialogue va vous indiquer une aide.</p><figure id="c4123e7e-7f4f-4442-bc81-24c3ff5b8db8" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162217562.png"><img style="width:356px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162217562.png"/></a></figure><p id="66ba1ad6-8065-456f-9973-3d28cda1eeb0" class="">Et si l’aide ne suffit pas, on peut avoir plus de précision.</p><figure id="d14c4760-25ba-4cea-b6a2-3541ed0099ce" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162347511.png"><img style="width:708px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162347511.png"/></a></figure><figure id="9c2230bc-86b0-47ab-8bc2-c5565d962a2a" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162418872.png"><img style="width:544px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/image_2024-04-12_162418872.png"/></a></figure><h3 id="09539229-f429-4df6-b278-713e58b409b7" class="">Vérification :</h3><p id="4ff7c697-f377-4f73-9cbe-35187f54aecc" class="">Si vous souhaitez une vérification de la bonne avancement de votre niveau, vous pouvez cliquer sur le bouton “Vérifier”.</p><figure id="d1faf7c4-703b-4515-b35d-f2603bb5878d" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2018.png"><img style="width:594px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2018.png"/></a></figure><p id="5a48d08f-7eba-49e4-8d16-48d3b4517d53" class="">Puis une boite de dialogue va vous indiquer si votre schéma est correct ou non</p><figure id="f3331654-e013-4378-a8a2-a8c0bbd45999" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2019.png"><img style="width:269px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2019.png"/></a></figure><figure id="4729eb42-1030-4f3b-9d5c-b43c46671514" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2020.png"><img style="width:271px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2020.png"/></a></figure><h3 id="2f9e30fc-f4c2-4478-8674-7085ad3f5225" class="">Retour :</h3><p id="64a89fe5-8a14-450e-8ab4-5c2db238273f" class="">Vous pouvez effectuer un Retour arrière en jeu qui permet de revenir une action en arrière. Pour faire cela, vous avez juste à cliquer sur le bouton “Retour”.</p><figure id="d4fbc05d-6d90-4cd4-95a8-c55be4db7280" class="image"><a href="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2021.png"><img style="width:84px" src="Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249/Untitled%2021.png"/></a></figure><h2 id="d3c32c56-4ffb-4fa3-bd58-be47c811e0a5" class="">FAQ :</h2><p id="31f87e44-667e-4365-be0b-af34a664f35a" class="">Q : Le bouton Tutoriel et Multijoueur ne marche pas ?</p><p id="df6eff99-af54-4868-8358-24bce2558be8" class="">R : Oui, le tutoriel et le multijoueur ne sont pas encore disponibles, ils le seront dans le futur.</p><p id="8289ead8-5117-4a5f-8a52-a769982946a7" class="">Q : Puis-je créer mes propres cartes de Hashi et y jouer ?</p><p id="743c160c-fcb9-4e4c-a881-53a6339d7cfd" class="">R : Un éditeur de carte existe pour les développeurs, il sera bientôt implémenté au jeu !</p><p id="7fc46e37-0523-44da-b133-ce0aa3ac101d" class="">Q : Mon ami souhaite jouer sur ma machine sans pour autant être sur ma partie, existe-t-il une solution ?</p><p id="756480a2-8aeb-4126-ab48-3ee22e8a0aa2" class="">R : En effet ! Un menu profil permet de conserver une progression différente pour chaque utilisateur.</p><p id="b88aad6c-bd0b-401f-aaa2-77ee84497de3" class="">Q : Les couleurs ne sont pas à mon gout, puis-je les changer ?</p><p id="d98e0117-3003-4458-ba5f-ba949c2d2b6a" class="">R : Tout à fait ! Dans le menu Paramètres, divers thèmes sont disponibles.</p><p id="38956220-eb41-4294-9c65-ac43b7c01128" class="">Q : Je n’ai pas envie d’utiliser d’aide pendant une grille, est-ce possible de sauvegarder mon avancée avant de tester des manipulations ?</p><p id="a4016cd8-fa10-44ad-9370-e0bfb5c7de9b" class="">R : Effectivement, le bouton Checkpoint permet une sauvegarde rapide pour y revenir sans danger. </p><p id="7b0377c9-a1b6-41f9-9e13-53ed6812d5ef" class="">
+</p><p id="a03fc0b4-ea5d-418f-82f8-7e235e90580f" class="">
+</p><p id="d270eb86-9108-436c-9d50-edde30548895" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

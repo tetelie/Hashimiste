@@ -1,0 +1,710 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cahier des charges</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3ebbb0b0-75e3-4f58-a689-56f6e492fbb2" class="page sans"><header><h1 class="page-title">Cahier des charges</h1><p class="page-description"></p></header><div class="page-body"><div id="618813bb-c06b-4da2-841a-66f12dcead55" class="column-list"><div id="d0b86932-6f58-47e2-9821-22f0f04496b6" style="width:16.666666666666664%" class="column"><p id="c22d458b-eced-497d-a213-c225d98875ba" class="">
+</p></div><div id="8d118a5d-bae5-4f5c-8863-dbae8b8105bc" style="width:75%" class="column"><div id="2ced7fef-40d6-4780-8371-8aca14875b3d" class="column-list"><div id="5a78a2ad-61b2-43ef-8643-6e7463519063" style="width:54.166666666666664%" class="column"><p id="c9afc3ae-d457-49bc-b9f1-85391336cdf5" class="">
+</p></div><div id="d21e5323-98cf-4083-8d59-422f4639725e" style="width:116.66666666666666%" class="column"><h1 id="c19600b2-6c32-4227-9322-206ce2820145" class="">GROUPE 1: HASHIMISTE</h1></div><div id="8232ef56-66bd-4dc6-b364-102ee3772e05" style="width:83.33333333333334%" class="column"><p id="34f790c8-666e-4f0c-a854-e29944169fc8" class="">
+</p></div></div></div><div id="6da9c153-67c4-4c1d-9b8f-74cb8580b01d" style="width:8.33333333333333%" class="column"><p id="894125ef-04aa-45a9-8f08-e06fc04bd9a1" class="">
+</p></div></div><div id="f4dc02e1-7922-4ceb-b850-8a99ab279038" class="column-list"><div id="1c6327e7-ebe3-4065-8386-477947c4d49b" style="width:20%" class="column"><p id="18812f24-1823-441b-ae4b-ed923bea2c5d" class="">
+</p></div><div id="b0955bed-fb4c-4817-addd-68595f84edc7" style="width:12.5%" class="column"><p id="3be3cda3-a508-4865-bfe2-eb9a73429ae8" class="">
+</p></div><div id="f65ce8e0-39d7-4260-8a98-c6ae5ff46b2d" style="width:27.500000000000004%" class="column"><p id="89dd06c9-ab2f-42f6-aaa8-0459d2520782" class="">ABID Ilyas,</p><p id="5b294e72-696f-45d4-91da-6ccde1045bc8" class="">AGEORGES Henzo,</p><p id="cac9f8bc-9f5a-49a7-ae49-e66d6c72c0da" class="">BARBET Lucas, </p><p id="6fab8fab-cd82-49e1-aec5-f45632ae9f67" class="">BOULANGER Damien, </p><p id="0fd3f50f-2a51-4833-9718-209466123aae" class="">DELETANG Elie, </p><p id="0452cc75-fed6-46b7-bde2-e4ddcce43817" class="">DUREAU Arthur, </p><p id="2a7a3ed0-6900-44b7-a298-2ab3707492a4" class="">PATAULT Kylian, </p><p id="427d1a06-8f67-4970-8434-8a84c3738db3" class="">SAINTY Antoine, </p><p id="28e83b0e-ecae-49c4-992f-4c5f8f2b7806" class="">TEISSIER Antoine</p><p id="e4ed33dd-5a71-43b6-baa3-398ffbb46ded" class="">
+</p></div><div id="569d9987-37e8-46c5-b57c-d9cb96261081" style="width:20%" class="column"><p id="44aeda0a-701c-4b6d-ae73-30f0acba07a2" class="">
+</p></div><div id="74a3fece-33f4-4bf1-b9bc-2031361e9232" style="width:20%" class="column"><p id="7aea8086-6e3b-4327-8659-de28e44c74ce" class="">
+</p></div></div><p id="eb390190-e49a-4a95-bc07-fb837df34884" class="">
+</p><p id="f426497b-29d7-4d04-a0ec-7200e0def460" class="">
+</p><p id="769d3ed7-7291-4436-a85c-9fd31b1f3650" class="">
+</p><p id="09ed47c9-a503-480d-b005-2b69426205d6" class="">
+</p><p id="efd4b5ff-ff4e-4575-a598-3715bef4ae06" class="">
+</p><p id="c11e5172-7204-425a-99ec-5d94bedd0b69" class="">
+</p><p id="84e7ddad-8428-4b05-9d10-2962816aee81" class="">
+</p><p id="be3937dc-53e3-40e4-a0df-7edcdd765714" class="">
+</p><p id="7e52ee3c-9df2-44ea-a087-d6fc9c4b6980" class="">
+</p><p id="10187c1e-ecc7-4b79-a516-82dd2be274c4" class="">
+</p><p id="ee9ed576-63bd-4bc8-b116-4f77e535436d" class="">
+</p><p id="43f4aac0-db0a-463b-ab5c-ef489418a828" class="">
+</p><p id="0227926a-ffd4-4b2d-89be-254d8f8f1992" class="">
+</p><nav id="32c9064e-3bf8-469e-a5cc-486fc1d664ef" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c19600b2-6c32-4227-9322-206ce2820145">GROUPE 1: HASHIMISTE</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a77fe38f-4f80-4cc1-93a6-c0e295056692">Introduction</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#822a0b8b-f4c5-4f89-9e86-802fc5a36a09">Contexte du projet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42b920a3-9294-4b10-af9e-876a05985c8a">Objectifs du projet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#5fe1684a-9115-46d4-88db-844656743af0">Critères d’acceptabilités</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#963fac7f-6c99-41de-a1a8-85c63dc1500b">Gestion de projet</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d5893898-cbb0-4171-907f-c674b7d8680d">Diagramme de Gantt</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f4d128db-d94d-47c7-8c8c-735bfad714af">Besoins</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#35cb85d3-d6f9-4754-bce3-4dfb2fb2ce7f">Besoins des utilisateurs</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#40fe9aa1-0705-49e9-87fb-dbfba45f0933">Scénario d’utilisation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#30153729-7759-4485-a2b7-66aff87b4e2d">Fonctionnalités</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6b50594c-3467-4d7e-b574-46ac0b099aff">Fonctionnalités principales :</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#96bab441-4b64-4b07-a4ff-b437d03cda36">Fonctionnalités secondaires :</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#09120c12-fd2a-41d3-98ea-51a111adc2a6">Maquettes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#80126218-8f2a-4245-a6eb-8b19ef1c2bfc">Contraintes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dc5f6be2-b408-40ba-9be0-075e1ba299ac">Exigences fonctionnelles</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2d4ed70b-40c6-4860-b6ab-5f483073e6e6">Exigences clients</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#531413e6-a825-47aa-b18d-1083fd2e12f5">Les risques</a></div></nav><h1 id="a77fe38f-4f80-4cc1-93a6-c0e295056692" class="">Introduction</h1><h2 id="822a0b8b-f4c5-4f89-9e86-802fc5a36a09" class="">Contexte du projet</h2><p id="4e2ba15c-bf26-4a6d-8ad5-34f94bf6bcae" class="">Dans le cadre du module de Génie Logiciel 2 de notre troisième année de licence informatique à l’Université du Mans, nous avons eu la consigne de créer un système d’aide basé sur des techniques pour la résolution de grilles de Hashi.</p><p id="67f0a3a0-5de9-4420-b606-960792816c0c" class="">
+</p><p id="a07651bb-ab42-4944-9eb8-8eea0adc357f" class="">Le jeu du Hashi (du nom japonais complet Hashiwokakero, qui se traduit comme “construire des ponts”), apparu pour la première fois dans un magasine de puzzle de l’éditeur Nikoli en 1990, est un jeu de logique dans lequel le joueur doit relier des îles entre elles grâce à un maximum de 2 ponts par côté d’une île.</p><h2 id="42b920a3-9294-4b10-af9e-876a05985c8a" class="">Objectifs du projet</h2><p id="157de7fb-3c3e-4a7f-aa2e-6c27735e1ed7" class="">L’objectif du projet est d’implémenter le jeu du Hashi avec des fonctionnalités permettant d’aider le joueur en lui proposant des techniques ou des astuces en fonction de la difficulté choisie afin de lui garantir de finir le niveau du jeu.</p><p id="c8761bad-6bdd-4491-9040-733ca4288c11" class="">
+</p><p id="17d90e2e-1ab5-49ee-83f0-542c06c715e4" class="">Les objectifs de notre logiciel sont de créer un plateau de jeu, une interface graphique ergonomique et fonctionnelle, un système d’aides interactif, ainsi qu’un système de jeu pour le jeu de Hashi.</p><h2 id="5fe1684a-9115-46d4-88db-844656743af0" class="">Critères d’acceptabilités</h2><p id="c0fb93c0-178b-4e38-920c-5a388c87ee49" class="">Suite à la réalisation de l’application, les critères suivant devront être respectés :</p><ul id="f1d6c062-67f5-4ae9-855e-826d23544864" class="bulleted-list"><li style="list-style-type:disc">L’application doit être ergonomique et intuitive</li></ul><ul id="477f31ef-9767-4936-9e14-72cd6c0e2f56" class="bulleted-list"><li style="list-style-type:disc">L’application doit pouvoir montrer à l’utilisateur des aides et des techniques correspondant à une grille</li></ul><ul id="135a8a37-8188-4882-b54d-bb3b0739624b" class="bulleted-list"><li style="list-style-type:disc">L’application doit pouvoir guider l’utilisateur pour qu’il utilise de moins en moins les aides</li></ul><ul id="00d86b7c-ded1-4d89-b341-b9d56f0552c1" class="bulleted-list"><li style="list-style-type:disc">L’application doit permettre à l’utilisateur de faire une sauvegarde rapide et un chargement rapide pour revenir à un état précédent du jeu</li></ul><h1 id="963fac7f-6c99-41de-a1a8-85c63dc1500b" class="">Gestion de projet</h1><h2 id="d5893898-cbb0-4171-907f-c674b7d8680d" class="">Diagramme de Gantt</h2><figure id="a793d734-74b6-4c71-b49a-0313c1743342" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/Untitled.png"><img style="width:1008px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/Untitled.png"/></a></figure><h1 id="f4d128db-d94d-47c7-8c8c-735bfad714af" class="">Besoins</h1><h2 id="35cb85d3-d6f9-4754-bce3-4dfb2fb2ce7f" class="">Besoins des utilisateurs</h2><p id="2eb4d837-4ec7-4596-88c0-e9dc2cb3635c" class="">En utilisant l’application, les utilisateurs auront différents besoins dont nous devons nous occuper.</p><p id="bca075c6-d7ca-4c0b-80d1-7c317f167623" class="">Les utilisateurs pourront :</p><ul id="7f9b8c9d-56da-45ed-b8ab-ce1fa5aad9e3" class="bulleted-list"><li style="list-style-type:disc">Utiliser des aides pendant une partie et apprendre des techniques de démarrage et avancées pour pouvoir résoudre une grille de Hashi</li></ul><ul id="98751556-2736-4404-96d6-4c50d0faecd8" class="bulleted-list"><li style="list-style-type:disc">Jouer à plusieurs modes de jeu (et dans certains modes, choisir la difficulté) : aventure, libre, entraînement (techniques), tutoriel</li></ul><ul id="6cfab8c3-1ab5-4a13-82a6-3c7873f0600c" class="bulleted-list"><li style="list-style-type:disc">Sauvegarder et charger des grilles déjà commencées</li></ul><ul id="b2687c02-4296-4f17-a39d-b6055aecd8b9" class="bulleted-list"><li style="list-style-type:disc">Utiliser un système de point de sauvegarde pour revenir à un moment donné dans une grille</li></ul><ul id="033ad85f-8e3f-42e4-a731-a9209537a941" class="bulleted-list"><li style="list-style-type:disc">Avoir accès à un profil utilisateur avec des statistiques</li></ul><ul id="b24dfbb5-b8b7-490c-9de2-71f1841f63a2" class="bulleted-list"><li style="list-style-type:disc">Régler différentes options audios et visuelles (différentes textures pour le fond, les îles et les ponts)</li></ul><h2 id="40fe9aa1-0705-49e9-87fb-dbfba45f0933" class="">Scénario d’utilisation</h2><p id="c0b68d55-5c12-4691-a43b-28d99605fca8" class="">Monsieur X n’a jamais joué au jeu de Hashi, son ami lui en parle donc il télécharge Hashimiste afin de s’y essayer. Après le lancement de l’application, Monsieur X se crée son profil utilisateur en rentrant son nom afin de sauvegarder ses parties futures. Une fois son profil créé, il a le choix entre plusieurs modes de jeu, mais étant débutant, il décide de commencer par le mode Tutoriel dans lequel il va apprendre les bases du jeu et les règles. Après ce tutoriel, il décide de se renseigner sur les aides à la résolution d’une grille disponibles dans le jeu et choisit le mode Techniques qui va lui décrire les techniques disponibles avec des visuels afin qu’il ait de bonnes bases avant de commencer à résoudre des grilles. Après avoir lu les techniques, il décide de jouer sur le mode Aventure qui l’oblige à commencer par des grilles de jeu faciles. Une fois face à la grille, il se rend compte qu’il s’est trompé en plaçant un mauvais pont, il clique donc sur le bouton de retour en arrière pour corriger son erreur. Pendant qu’il résout la grille, il se retrouve bloqué, donc il décide d’utiliser le bouton d’aide qui va lui indiquer les techniques qu’il pourrait utiliser pour se débloquer. L’explication qu’il reçoit est assez vague et il ne la comprend pas, donc il choisit de réutiliser le bouton d’aide pour avoir une nouvelle explication plus détaillée. Après quelques manipulations, il appuie sur le bouton pour vérifier s’il a fait des erreurs afin de les corriger. Il réussit la grille et décide de faire une pause en quittant le jeu, il pourra continuer sa progression en se reconnectant à son profil plus tard.</p><p id="0a7188fb-f167-4e05-9797-b2c5a325a162" class="">Monsieur Y est un habitué du jeu de Hashi, il joue à Hashimiste depuis un moment. En lançant le jeu, il sélectionne son profil et ayant déjà terminé le mode Aventure, il choisit le mode Libre. Monsieur Y, souhaitant de la difficulté, choisit une grille de niveau difficile. Lors du jeu, il se retrouve en difficulté mais décide de ne pas utiliser le bouton d’aide. Pour pallier cela, il effectue une sauvegarde rapide avant d’effectuer des manipulations dont il n’est pas sûr qu’elles soient bonnes. Après avoir posé quelques ponts, il se rend compte que ce n’est pas la bonne solution et décide de recharger sa sauvegarde rapide pour ne pas avoir à revenir en arrière plusieurs fois. Il réussit finalement à résoudre sa grille sans utiliser d’aide, donc le score qu’il obtient est élevé et il est sauvegardé comme étant le score le plus haut pour la grille sur sa machine.</p><h2 id="30153729-7759-4485-a2b7-66aff87b4e2d" class="">Fonctionnalités</h2><h3 id="6b50594c-3467-4d7e-b574-46ac0b099aff" class="">Fonctionnalités principales :</h3><p id="14152578-069f-4703-ac1c-53a5a87129a0" class=""><strong>FP1 -</strong> <strong>Aides en jeu :</strong></p><ul id="c1b37408-36e1-4833-9ebe-045e7eb97050" class="bulleted-list"><li style="list-style-type:disc">FP1.1 - Aides progressives en jeu : L’utilisateur peut demander des aides pendant une partie qui seront de plus en plus précises à mesure que le joueur demande de l’aide.</li></ul><ul id="64cd31e2-288e-41c0-b0d3-ce49dfce4e64" class="bulleted-list"><li style="list-style-type:disc">FP1.2 - Aides visuelles : L’utilisateur peut activer ou non des aides visuelles qui mettent en surbrillance les ponts qu’il survole avec le curseur et qui indiquent quand une île a tous ses ponts de reliés.</li></ul><p id="d6028324-de5e-4908-bfaa-de30a74fa47c" class=""><strong>FP2 - Fonctionnalités en jeu :</strong></p><ul id="79c0e419-aa72-458a-b045-30201a52fccc" class="bulleted-list"><li style="list-style-type:disc">FP2.1 - Sauvegarde et chargement : L’utilisateur peut sauvegarder et charger une grille en cours à tout moment.</li></ul><ul id="1a244113-6ea0-4459-ba80-37a7bc668cde" class="bulleted-list"><li style="list-style-type:disc">FP2.2 - Réinitialisation : L’utilisateur peut réinitialiser la grille actuelle.</li></ul><ul id="7e0cdbe9-8d2d-4707-bae7-0152497c6c79" class="bulleted-list"><li style="list-style-type:disc">FP2.3 - Retour en arrière : L’utilisateur peut annuler un coup qui vient d’être effectué.</li></ul><ul id="ff19efc9-c739-4997-b39b-e84005dd46a8" class="bulleted-list"><li style="list-style-type:disc">FP2.4 - Vérification : L’utilisateur peut vérifier si il a fait une ou plusieurs erreur(s).</li></ul><ul id="27486d01-1b36-436a-b0a1-f01dba1208dd" class="bulleted-list"><li style="list-style-type:disc">FP2.5 - Point de contrôle : L’utilisateur peut poser un point de contrôle sur lequel il peut revenir à tout moment.</li></ul><p id="9bf26470-858c-4a3c-8126-bbf087fd4a80" class=""><strong>FP3 - Modes de jeu :</strong></p><ul id="2a32e516-4c2c-4136-a720-b023ef55f949" class="bulleted-list"><li style="list-style-type:disc">FP3.1 - Aventure : L’utilisateur a accès à un mode aventure où il résoudra des grilles dans un ordre précis.</li></ul><ul id="1130037c-acc9-42f0-8d28-af606651e8bc" class="bulleted-list"><li style="list-style-type:disc">FP3.2 - Tutoriel : L’utilisateur a accès à un tutoriel qui lui explique les règles du Hashi et les techniques de démarrage.</li></ul><ul id="a2ebb504-b124-4e82-8c77-00be6d8c28c6" class="bulleted-list"><li style="list-style-type:disc">FP3.3 - Libre : L’utilisateur a accès à un mode libre où il peut résoudre des grilles organisées dans différentes difficultés.</li></ul><ul id="d3d51117-7ad8-4ec1-885b-dd83ecf2a776" class="bulleted-list"><li style="list-style-type:disc">FP3.4 - Entraînement : L’utilisateur a accès à la liste des techniques avec leur description et un exemple de la technique sur une grille.</li></ul><h3 id="96bab441-4b64-4b07-a4ff-b437d03cda36" class="">Fonctionnalités secondaires :</h3><p id="b51bc98a-f2da-4ac4-9335-5898057b3ed1" class=""><strong>FS1 - Gestion de profils :</strong></p><ul id="18ea89b3-3c61-4c3b-91e2-f6114c86cebb" class="bulleted-list"><li style="list-style-type:disc">FS1.1 - Création/suppression de profils : L’utilisateur peut créer et supprimer des profils.</li></ul><ul id="5222d921-6248-4390-9c7e-0200f2cd891a" class="bulleted-list"><li style="list-style-type:disc">FS1.2 - Stockage de statistiques : L’utilisateur a accès aux statistiques de son(ses) profil(s) concernant les grilles qu’il a complété.</li></ul><p id="ed3411f0-4fd5-4b7c-baf6-ce7877f2cc72" class=""><strong>FS2 - Graphiques :</strong></p><ul id="46c1835d-9a83-409b-a724-08915410dcf3" class="bulleted-list"><li style="list-style-type:disc">FS2.1 - Sélection de thèmes et skins : L’utilisateur peut changer le thème des grilles, des ponts et des îles.</li></ul><h2 id="09120c12-fd2a-41d3-98ea-51a111adc2a6" class="">Maquettes</h2><div id="29d35b84-0034-4d69-8228-814537261b04" class="column-list"><div id="6693fc0c-182d-478f-8ac5-c6a89649a19f" style="width:50%" class="column"><figure id="b6430abf-3621-403e-a0dd-32d48f5e09d1" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/profil.png"><img style="width:481px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/profil.png"/></a></figure><p id="45175354-4d2e-4b8c-bcee-158eb8554f30" class="">
+</p></div><div id="7278f64c-7e89-4597-9e84-2e2206070f9b" style="width:50%" class="column"><figure id="4f2b6d19-f0fa-4798-a10b-4150d679b368" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/profilavec.png"><img style="width:481px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/profilavec.png"/></a></figure><p id="ad8fc4a7-c29d-4461-adf8-367cd1020f8e" class="">JOptionPane</p></div></div><p id="e762550d-36d7-4e21-8163-1d7071971a8d" class="">Sélection de profils</p><p id="a2329201-5c96-417b-a487-13dca0470b7a" class="">Lors du premier lancement du jeu, il n’y a pas de profil et seule l’option d’en ajouter est disponible. Après avoir cliqué, l’utilisateur choisi un nom, et le tutoriel se lance.</p><p id="a751443c-de5d-4166-bc52-1dc55c2f5d2f" class="">S’il existe déjà des utilisateurs, ils sont affichés. Sélectionner un profil existant envoie sur le menu principal.</p><figure id="0a353d83-8494-4d02-93d1-b40f9141d63d" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/image.png"><img style="width:439px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/image.png"/></a></figure><p id="56d0bf83-f090-4e1d-b0fd-87e257eac298" class="">Menu principal</p><p id="e8e3ea56-253c-415f-8acc-e512cbf2d4d8" class="">Le bouton Aventure commence ou reprend l’aventure au point où en est l’utilisateur du profil.</p><p id="dae7eb91-a432-4813-ab40-8fc15ce12370" class="">Le bouton Tutoriel lance le tutoriel.</p><p id="637743b2-66b4-4313-9e9d-0aa790353398" class="">Le bouton Mode Libre envoie vers le menu de sélection de niveau du mode libre.</p><p id="d37c06cc-a0dd-4929-bb6e-2c433fb9b066" class="">Le bouton Technique renvoie vers le menu listant les différentes techniques.</p><figure id="72ce5825-1f7f-4cfb-90ed-d7aaa0f466c7" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/Untitled%201.png"><img style="width:599px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/Untitled%201.png"/></a></figure><p id="6fcf664c-d558-4f7a-a8ac-6e5ff460d6a6" class="">Mode Aventure</p><p id="d2d89528-2322-4aa0-a114-e2e87c4983d0" class="">Le bouton Menu renvoie sur le menu principal.</p><p id="11565695-737d-4b3c-9b66-01d103031c01" class="">Chaque bouton au centre correspond à un niveau du mode aventure. Une croix signifie qu’on ne peut pas encore y accéder. Une étoile vide signifie qu’on peut y accéder, et qu’on a pas réussi à le faire sans aide. Une étoile jaune signifie qu’on a complété le niveau sans aide et sans erreur. La couleur des boutons indique la difficulté du niveau.</p><figure id="654edd0f-7780-485f-b0db-312dc693c38f" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/menu2.png"><img style="width:384px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/menu2.png"/></a></figure><p id="07f6e8c3-a8a7-482e-90fb-b47ad2e9c5b6" class="">Mode Libre</p><p id="b655e5bf-e7e6-42e4-ab64-d69c797231c8" class="">Passer la souris sur un niveau affiche une prévisualisation de ce niveau sur la partie droite de l’écran.</p><p id="d9a276f5-f009-4bae-b071-59ae68852c46" class="">Cliquer sur l’un des niveaux débute une partie avec la grille correspondante.</p><p id="d0082519-215f-4469-89e6-eb65a6884554" class="">Cliquer sur le bouton Menu renvoie vers le menu principal.</p><figure id="4d642640-56ca-49b1-9d05-cc0d051dfecf" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/image%201.png"><img style="width:883px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/image%201.png"/></a></figure><p id="d582be2c-4da4-498c-9575-412b06489e2a" class="">Mode Technique</p><p id="2ed88f89-d8d6-468c-8b1e-55c1367953f2" class="">Sélectionner une technique affiche une explication textuelle de celle-ci, ainsi qu’un visuel présentant des cas d’utilisation.</p><p id="39eeceb3-ffe6-4be6-96ab-72245d9cbb41" class="">Le bouton Menu renvoie sur le menu principal.</p><figure id="e5690b87-1b23-4027-b537-c6a3e8a6cf72" class="image"><a href="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/game.png"><img style="width:378px" src="Cahier%20des%20charges%203ebbb0b075e34f58a68956f6e492fbb2/game.png"/></a></figure><p id="fc12a254-3395-4076-9360-90c312048418" class="">Grille de jeu</p><p id="f20260ed-a1ec-45b8-adc1-9752e3713f18" class="">Le bouton Menu renvoie vers le menu précédent.</p><p id="7479bc2e-2ce8-4f45-8980-055cb7eb8f79" class="">Le bouton Vérifier indique au joueur s’il y a des erreurs dans la partie en cours ou pas.</p><p id="3d0af38a-5036-48d8-beff-decfd9559499" class="">Le bouton Charger reprend la partie telle qu’elle était au précédent point de sauvegarde.</p><p id="91597ff7-6be1-41dc-991b-ccd404587e2a" class="">Le bouton Sauvegarde garde en mémoire l’état actuel de la partie.</p><p id="b747b2ac-4842-4d74-b135-4686df3e6fda" class="">Le bouton Retour enlève le coup précédemment joué. Il peut être pressé plusieurs fois pour revenir plusieurs coups en arrière.</p><p id="c1225cbe-aeb9-4422-8c83-9cc205c6c112" class="">Le bouton Aide donne un indice au joueur pour résoudre le puzzle. Il peut être pressé plusieurs fois pour avoir des indices plus clair.</p><p id="5f42073c-1b0d-4526-8616-b5e390429ff9" class="">Le temps écoulé depuis le début du niveau est indiqué en haut à droite.</p><h1 id="80126218-8f2a-4245-a6eb-8b19ef1c2bfc" class="">Contraintes</h1><h2 id="dc5f6be2-b408-40ba-9be0-075e1ba299ac" class="">Exigences fonctionnelles</h2><p id="ab606e07-5444-4630-82af-6a10f953953c" class="">Les exigences fonctionnelles sont les suivantes :<div class="indented"><ul id="83971d31-e648-4cb9-8dec-226d88ad1dc7" class="bulleted-list"><li style="list-style-type:disc">Le logiciel doit être programmé en Java</li></ul><ul id="3f322e7a-6b3c-48c8-8a7c-3990408170e3" class="bulleted-list"><li style="list-style-type:disc">Le logiciel doit proposer une aide à la résolution des puzzles</li></ul><ul id="b94a2eb1-f271-49a1-8542-1202606f4c5e" class="bulleted-list"><li style="list-style-type:disc">Si le logiciel a une musique, il faut qu’il soit possible de la désactiver</li></ul></div></p><h2 id="2d4ed70b-40c6-4860-b6ab-5f483073e6e6" class="">Exigences clients</h2><p id="9ebc90a4-503e-425c-94de-ba6ba48d4b0c" class="">Les exigences des clients sont les suivantes :<div class="indented"><ul id="434ce86b-6229-4f41-beb4-5de33c0093d8" class="bulleted-list"><li style="list-style-type:disc">Le projet doit être fini avant le 16 Avril 2024</li></ul><ul id="7e7a7a69-ae0b-4c6c-8dee-74f69958b72b" class="bulleted-list"><li style="list-style-type:disc">Un manuel utilisateur doit être fourni avec le logiciel, ainsi qu’un cahier d’analyse et de conception</li></ul><ul id="541de2a6-8fc9-4f7c-8111-b6618ca4476b" class="bulleted-list"><li style="list-style-type:disc">Le logiciel doit respecter le cahier des charges</li></ul></div></p><h2 id="531413e6-a825-47aa-b18d-1083fd2e12f5" class="">Les risques</h2><p id="d9ded5f8-14be-4724-aa72-024cedfe0adc" class="">Les risques repérés sont les suivants :<div class="indented"><ul id="306f2553-dfbd-48de-9859-d88b36599e92" class="bulleted-list"><li style="list-style-type:disc">Mauvaise compréhension des exigences des clients</li></ul><ul id="787b8074-5e86-4576-886c-d64a33be12c7" class="bulleted-list"><li style="list-style-type:disc">Manque d’organisation du groupe de projet</li></ul><p id="56cfa0fc-1069-485d-8723-357531e40eb0" class="">
+</p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,699 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Diagrammes de classes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a209336a-3428-4916-821e-ec62e35ec69d" class="page sans"><header><h1 class="page-title">Diagrammes de classes</h1><p class="page-description"></p></header><div class="page-body"><p id="0db35de0-2bdc-4b14-8f71-4c71e5468260" class="">
+</p><figure id="c5e405be-0852-47d0-acda-f78ab2023162" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Untitled.png"><img style="width:708px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Untitled.png"/></a></figure><p id="d4f3ddcb-ea29-45e3-87b2-f97ef3d0587b" class="">
+</p><p id="37ed139d-7c6d-4e7e-8e25-5d54c292cd51" class="">
+</p><figure id="05602c7b-abd6-402d-921f-513c149f3440" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/JEU.png"><img style="width:3116px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/JEU.png"/></a></figure><figure id="8c20f713-e92e-434c-93ca-f9faaf46f169"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_Jeu.asta">Diagramme_de_classe_Jeu.asta</a></div></figure><p id="8fc2db19-54ae-4ee3-ae87-3d356bf05f8c" class="">
+</p><figure id="d630e7ce-7069-4755-b1ca-dcf03bb2591e" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/digram_class_bdd.png"><img style="width:331px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/digram_class_bdd.png"/></a></figure><figure id="1bac4a0e-4cec-48e4-9a13-965f7b7892e2"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagrame_de_classe_BDD.asta">Diagrame_de_classe_BDD.asta</a></div></figure><p id="c14a2932-9ce5-43f3-85a5-c7fa4bd22c38" class="">
+</p><figure id="083c535b-c675-459d-9fda-94eb0ae86708" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/classe_seul.png"><img style="width:708px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/classe_seul.png"/></a></figure><figure id="e17f87e0-aca1-431c-a9e4-3e88524ecec8"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagrame_de_classe_elem_seul.asta">Diagrame_de_classe_elem_seul.asta</a></div></figure><p id="fb3e55ed-c59d-4687-8ff0-f3f2ea00ca46" class="">
+</p><figure id="21228074-2b42-4d1a-97b7-cc587e0133c4" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/identifiable.png"><img style="width:2566px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/identifiable.png"/></a></figure><figure id="09ae53de-edf4-462c-9287-62247396c464"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_identifiable.asta">Diagramme_de_classe_identifiable.asta</a></div></figure><p id="1e0063fe-1761-4928-bbd1-4083512a72a7" class="">
+</p><figure id="2da061ef-bfd4-40d3-9a16-2077672f540d" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/theme.png"><img style="width:331px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/theme.png"/></a></figure><figure id="b60d28c2-be85-4193-873a-110befd27f7a"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_theme.asta">Diagramme_de_classe_theme.asta</a></div></figure><p id="5b82003e-267c-48ca-85d1-ee67bd7adac5" class="">
+</p><figure id="2abca679-d8ba-4cf2-972b-4b43f5d3ecb2" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/sauvegarde.png"><img style="width:325.3999938964844px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/sauvegarde.png"/></a></figure><figure id="ae976900-81ef-487c-82cc-f810d138d0ef"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_sauvegarde.asta">Diagramme_de_classe_sauvegarde.asta</a></div></figure><p id="d4764a94-e697-4fbe-8dd9-6235b3aafe68" class="">
+</p><figure id="2a7577ca-0b41-4d3c-8671-9c93fb8dade9" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/filter.png"><img style="width:325.3999938964844px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/filter.png"/></a></figure><figure id="f41e4e6f-6520-4f8d-aab1-0bca92bf5564"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_filter.asta">Diagramme_de_classe_filter.asta</a></div></figure><p id="5c3fc2e3-9333-4c64-9596-717ca86ac7ef" class="">
+</p><figure id="68095730-dbfc-41f2-a777-21b38cf691da" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/historique.png"><img style="width:331px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/historique.png"/></a></figure><figure id="e8ac1ead-a83a-4aed-b892-92ca4206dbae"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagramme_de_classe_historique.asta">Diagramme_de_classe_historique.asta</a></div></figure><p id="462c277c-1937-4df5-a387-e748e0893a49" class="">
+</p><figure id="be96cd32-5f49-49fa-8128-4a89359958ae" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Stockage.png"><img style="width:708px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Stockage.png"/></a></figure><figure id="d06f664f-484e-4b28-9728-0725b1256a78"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Stockage.asta">Diagramme_de_classe_stockage.asta</a></div></figure><p id="8ffae757-674d-44f3-ae45-c1a501750039" class="">
+</p><figure id="bb8da338-3108-4dc4-911b-82cd9a255532" class="image"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/GameComponent.png"><img style="width:708px" src="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/GameComponent.png"/></a></figure><figure id="38bb0d9e-71f1-4d4f-987f-168ea7bd1314"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/Diagrame_de_classe_GameComponent.asta">Diagrame_de_classe_GameComponent.asta</a></div></figure><p id="e7928d61-7f1e-47ae-8435-bb5d9b649ef6" class="">
+</p><figure id="2a455423-bf9e-4b9c-a7c2-b553a3913b80"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/hashimiste.properties">hashimiste.properties</a></div></figure><p id="4a92d947-db1a-4dc0-9a4b-008bbf39ba32" class="">
+</p><p id="973dc837-b316-4631-95da-a3bab66a80f2" class=""><a href="https://github.com/projet-gl2">https://github.com/projet-gl2</a></p><p id="d582d5b7-5e8c-4057-afbc-9e4c5b409913" class="">
+</p><p id="a7b8e2ce-f269-49ee-b18e-e3d78bf24087" class="">à finir :</p><figure id="34ec6eff-c415-46c0-92a5-4543fa4434b5"><div class="source"><a href="Diagrammes%20de%20classes%20a209336a34284916821eec62e35ec69d/GameComponent.asta">GameComponent.asta</a></div></figure><p id="9231e2dc-46fd-4935-ba6c-0600626b8999" class=""><a href="https://mermaid.live/edit#pako:eNq1Gltz0zj3r2jCizsknbbAUjoMO70B4aPdzrbswxIeVFtJtTiWV7azdJnmt39HV0u25KQMO1xiS-dIR-d-jvV9lLKMjI5GaY6r6oziBcfLWZFRTtKasgKd3MyKWSFn0XFZTpd4QdD3WfH69bSoCZ_jlLx5MysQeooWpJ6mrEhuGcsJLnbQSTOfE04yiWRhbmjNySagj2zBojAPXYKmyzIXRAlkdyzZQY8ibXDXrch_cLi1IkXdcGIJ0-_Jh7fAY3JDgEBckyvO5jQXhNpjnXCaLSyeekumORkj-R8tanWutXhHNCcH3tu-wqvZdc1psQAmqAcx7ME46A7dp7iKSZiVV5inrOFVcmY0ZEfQY7nzB6MVLWBdFwBeOwBiDxdCvEuK3nGaA1EL-SNHYHV0b5--OWwSSH_QLERsAMrVEXcsgWUlT8d6c8XbSbvxxOwsHnsEbnGqp4j83eC8Sn67_QvmdpDWni25Nsj1LTlm_iienJHbZrHAt3lY0FpfUCbApsWc2SUM-upTTfPKsNO8W3OTiIlaZQetGM06K5xntGbc4Ku35C0V2n1ds_Qr2NIYndElKSp5WMX7CjcrssA8Izw5lmw4FzZldhAgTZmBTX3E96ypE3civcN8EcN7ipaYFprgz1_aCUvNr6jSTw471VnegTGfsmXJCljTHMkbTDqKVZ1yVlXCNJVtj5H5labtaQcnc06qO-0EjK66pLPikvyjjuU4iWOtJs4RWVORC7YiWXIhHns8yBnOrvGKJNeWzy4HFQnHOSc4uz__Rqu60vQ7LkBu8jsB-qvoPhIGFqgjEAMc6jBHrnSa0_RrZKknqATB1q4kcHlH06pHzxVwOU4y2OglwQBS9wRhj57ekfSrgJpWriFr3yJhXUcooQJTijvCIKPsATLeM07_ZUWN8yTOmTOOF4vIKgYc3Ur096AX3PGa2qvEA71HvOPoqtrGuQ5J2gJb5QrqmVy9nagSY4E76COo3LqdWitwoJvOaYql_ne2BGo-sEb4ue4MBu8PY58KwFpPld8Rxr-2suTi3zTvQN2Q9K6gfzdmd1AJ4joaGMFzjml6R3n4FFYAZ3QOdDd5TVBmH-WMPKjg6VpE50pDa2cIwPqpJ66ThubgG60Pcgetb_ZHfc8UJWkiRfz5y-cvliIVFY1KGm3CWvhmvQDRj2HSoK4NSR7_BQFAyW8qzuedWssYoLknup-lFI_U4G0No69rcf2O2uGA2umon7KcFQWZZlFdDAnb0YaorjoxU4rDTcnakcSijx1ix2ZX56FlbG8NqS-PXmjck9BPW9qY2AY7iljMgGluUNsniGk7COUOcQXqK1vJKseg2vE5qdO7a5Y30g77NvwErYBArjjorVg1ZcnhmPwKIpnNXVyIQec-nFPHvIY8hrdhjyv_kf0OxMbt_eHWTihc_v0E69_C0JWRvwdkSFOAJGPk7UhyAwhVjZfl2Bk1JZgWi5fI9lYYBp14tfHEq3snyO6OavMUKe8m7jHwCqtsb6L3Qlj-DHAcJMaJpxyq4DdGCrB2yoVvqNgrkNC35AzV8_DSozB4kkD9GGSO0yCYZqDEYJbR-lGq-nnByQI27AUgR3_6OudFiakfIqZ5t2APVO0BAbr-1ankO_V9sXUxv02b4_JWuJjKzsYbJjgnjbBmOx-EjOgWrRQlQWTPw2xo3Wxwppe3ah8o0YVAoVjKhFcmwvWs216E5KM8-ZUo3261Qpl8IYUyLCdD_ibczCj07p09ws2Odmmhf8xB8rTP0We_H6e07UlnVDftxmhDkyKCZ14fC2-AwGeUhNeUVKi0j2oKZKniTwuTuMFXupMTyIZrZjocY_R7UxTCfHfQhxM5o2BxWebCPfCbO7IEWmzd7PZEZMArYMO3pCC17We6AEFtjZBisD1CBomOkm9Zoch3uQDJjPCHK9u5hY2Dp7PKuqKtAkfY_xDWIOXgw3qk5oIt4I26MYD7CAQvd_0B7K1RBmylu4rmWCl_htKXDmArANKYKAGPEfb6gUKlloR7XUKdSm_dNPN7koF-o5OvtI8-HEm_lgzcUn_fof5N29F0x0owASLCc-L1MCPdXMO9C1JY9onnAZlbjl-wjHykt-3nDTswoKAxUtSSEKAAr26XtAMDS4YlYMkUcSLc425Dgo2HyH726qzgZiHmPZyGjJHT-GsrmqEvCsHtvaykm736mW3gi8SGYB9JJjbmNZDVnYpgnda6CHxMPbbhw0-EC4GMIJ7xhnIBzcRWnJysKPmn17Dvjicb0sotOstdJIcGEyDCzdXrGgreqpZew1YJ7ZgunoOOJ4Bvn_9H7gPrDMLr0ngzkorQIWBj8wVb-tYumeBZlh2xpw5MmGAijc6F8xN9d1fxrkr3lrQ1qtoX3Yix-YOAq_xWxY9wO8a9cGzzKR6oxwdP4Sa4LqOvSa7ty-O2He58fTMs1X1UHdgjIVC0cUglAvsgHBb9hjvCxSFIEprR6EadwNlUzZLwdbve2kXLxKbAm4LWFMqoyqpN78u9jZZbEbgFGZuJk4H9qiJNxhwjFr-_el9kW4tw5BrxDbSAxBhyqLqjhf1mXUZCkFI5RPFe30-zsNK5-ou-kvtQ2qUXWsnS1TNqB9-17M5wom3XtxWTptnrDX28nvX3rM392vZje28g4Kfjuc7LFY3vznoSmHgiUB4vJLt46yCiS2HN6etYVJd8j_UojXJW9pSrVS-xg3P3YOIO2U9cHBcZWyba-bZH5qQkdS9atfOQ34hbIdZcbQpjfaltshrNtgObb_V4uK9fQ54N3kN2tpV5T5zFDInmt9tweRy8p2ePQhojkKWNr92YarP5KuW09BNXlfQYVRarODH0xm26PhWybshvc8t3S6JWYIAN5JsSSwjdgn_-4hcZHlldV9clcoBGx8F9urw-fnseryi8yKu68--gJlgbfZFDiRiy31xRxhk1n1nfoQVuIHSo_NF9aeEkOd7VN7S7-wa11_Ng1tw9Q5MJzAT7E7PCv7miQPXdM7GFvV-lZuS9sHbU2dgCKlvVl3tCW0uI0La9tBzAVPas5r2es5kz37sVFRo-PKnlJrdvvz0GEZ0ZB8v8CbIyclTRlVALOReu9PCQXGQ9Pgxhq-_A-s7k0Brwt624ByFlEe0pgS2K1fYSYFZ43OhIzE67aHaD7oxlfDd5jSrVrHDTpyAJHoizmYsYg7EEtV58kGXe1grSLjEaj8DzLzHNRkcj6Rdmo1p0LGejI3jMyBw3eT0bgaUDKG4ggN8X6eio5g0Zj9QNN31T1wyWuBgdfR99Gx09f7b7bH9_7-DZy_2D_ReHB-PR_eho_5fD3YNXhy9fvfxl7-Xzg_3Dw4fx6F_GAH9v9_Bw79WLvRfPnu_vPd97dfBCrvannFSLE2nPF_qesPh5-D_Ydj2w">https://mermaid.live/edit#pako:eNq1Gltz0zj3r2jCizsknbbAUjoMO70B4aPdzrbswxIeVFtJtTiWV7azdJnmt39HV0u25KQMO1xiS-dIR-d-jvV9lLKMjI5GaY6r6oziBcfLWZFRTtKasgKd3MyKWSFn0XFZTpd4QdD3WfH69bSoCZ_jlLx5MysQeooWpJ6mrEhuGcsJLnbQSTOfE04yiWRhbmjNySagj2zBojAPXYKmyzIXRAlkdyzZQY8ibXDXrch_cLi1IkXdcGIJ0-_Jh7fAY3JDgEBckyvO5jQXhNpjnXCaLSyeekumORkj-R8tanWutXhHNCcH3tu-wqvZdc1psQAmqAcx7ME46A7dp7iKSZiVV5inrOFVcmY0ZEfQY7nzB6MVLWBdFwBeOwBiDxdCvEuK3nGaA1EL-SNHYHV0b5--OWwSSH_QLERsAMrVEXcsgWUlT8d6c8XbSbvxxOwsHnsEbnGqp4j83eC8Sn67_QvmdpDWni25Nsj1LTlm_iienJHbZrHAt3lY0FpfUCbApsWc2SUM-upTTfPKsNO8W3OTiIlaZQetGM06K5xntGbc4Ku35C0V2n1ds_Qr2NIYndElKSp5WMX7CjcrssA8Izw5lmw4FzZldhAgTZmBTX3E96ypE3civcN8EcN7ipaYFprgz1_aCUvNr6jSTw471VnegTGfsmXJCljTHMkbTDqKVZ1yVlXCNJVtj5H5labtaQcnc06qO-0EjK66pLPikvyjjuU4iWOtJs4RWVORC7YiWXIhHns8yBnOrvGKJNeWzy4HFQnHOSc4uz__Rqu60vQ7LkBu8jsB-qvoPhIGFqgjEAMc6jBHrnSa0_RrZKknqATB1q4kcHlH06pHzxVwOU4y2OglwQBS9wRhj57ekfSrgJpWriFr3yJhXUcooQJTijvCIKPsATLeM07_ZUWN8yTOmTOOF4vIKgYc3Ur096AX3PGa2qvEA71HvOPoqtrGuQ5J2gJb5QrqmVy9nagSY4E76COo3LqdWitwoJvOaYql_ne2BGo-sEb4ue4MBu8PY58KwFpPld8Rxr-2suTi3zTvQN2Q9K6gfzdmd1AJ4joaGMFzjml6R3n4FFYAZ3QOdDd5TVBmH-WMPKjg6VpE50pDa2cIwPqpJ66ThubgG60Pcgetb_ZHfc8UJWkiRfz5y-cvliIVFY1KGm3CWvhmvQDRj2HSoK4NSR7_BQFAyW8qzuedWssYoLknup-lFI_U4G0No69rcf2O2uGA2umon7KcFQWZZlFdDAnb0YaorjoxU4rDTcnakcSijx1ix2ZX56FlbG8NqS-PXmjck9BPW9qY2AY7iljMgGluUNsniGk7COUOcQXqK1vJKseg2vE5qdO7a5Y30g77NvwErYBArjjorVg1ZcnhmPwKIpnNXVyIQec-nFPHvIY8hrdhjyv_kf0OxMbt_eHWTihc_v0E69_C0JWRvwdkSFOAJGPk7UhyAwhVjZfl2Bk1JZgWi5fI9lYYBp14tfHEq3snyO6OavMUKe8m7jHwCqtsb6L3Qlj-DHAcJMaJpxyq4DdGCrB2yoVvqNgrkNC35AzV8_DSozB4kkD9GGSO0yCYZqDEYJbR-lGq-nnByQI27AUgR3_6OudFiakfIqZ5t2APVO0BAbr-1ankO_V9sXUxv02b4_JWuJjKzsYbJjgnjbBmOx-EjOgWrRQlQWTPw2xo3Wxwppe3ah8o0YVAoVjKhFcmwvWs216E5KM8-ZUo3261Qpl8IYUyLCdD_ibczCj07p09ws2Odmmhf8xB8rTP0We_H6e07UlnVDftxmhDkyKCZ14fC2-AwGeUhNeUVKi0j2oKZKniTwuTuMFXupMTyIZrZjocY_R7UxTCfHfQhxM5o2BxWebCPfCbO7IEWmzd7PZEZMArYMO3pCC17We6AEFtjZBisD1CBomOkm9Zoch3uQDJjPCHK9u5hY2Dp7PKuqKtAkfY_xDWIOXgw3qk5oIt4I26MYD7CAQvd_0B7K1RBmylu4rmWCl_htKXDmArANKYKAGPEfb6gUKlloR7XUKdSm_dNPN7koF-o5OvtI8-HEm_lgzcUn_fof5N29F0x0owASLCc-L1MCPdXMO9C1JY9onnAZlbjl-wjHykt-3nDTswoKAxUtSSEKAAr26XtAMDS4YlYMkUcSLc425Dgo2HyH726qzgZiHmPZyGjJHT-GsrmqEvCsHtvaykm736mW3gi8SGYB9JJjbmNZDVnYpgnda6CHxMPbbhw0-EC4GMIJ7xhnIBzcRWnJysKPmn17Dvjicb0sotOstdJIcGEyDCzdXrGgreqpZew1YJ7ZgunoOOJ4Bvn_9H7gPrDMLr0ngzkorQIWBj8wVb-tYumeBZlh2xpw5MmGAijc6F8xN9d1fxrkr3lrQ1qtoX3Yix-YOAq_xWxY9wO8a9cGzzKR6oxwdP4Sa4LqOvSa7ty-O2He58fTMs1X1UHdgjIVC0cUglAvsgHBb9hjvCxSFIEprR6EadwNlUzZLwdbve2kXLxKbAm4LWFMqoyqpN78u9jZZbEbgFGZuJk4H9qiJNxhwjFr-_el9kW4tw5BrxDbSAxBhyqLqjhf1mXUZCkFI5RPFe30-zsNK5-ou-kvtQ2qUXWsnS1TNqB9-17M5wom3XtxWTptnrDX28nvX3rM392vZje28g4Kfjuc7LFY3vznoSmHgiUB4vJLt46yCiS2HN6etYVJd8j_UojXJW9pSrVS-xg3P3YOIO2U9cHBcZWyba-bZH5qQkdS9atfOQ34hbIdZcbQpjfaltshrNtgObb_V4uK9fQ54N3kN2tpV5T5zFDInmt9tweRy8p2ePQhojkKWNr92YarP5KuW09BNXlfQYVRarODH0xm26PhWybshvc8t3S6JWYIAN5JsSSwjdgn_-4hcZHlldV9clcoBGx8F9urw-fnseryi8yKu68--gJlgbfZFDiRiy31xRxhk1n1nfoQVuIHSo_NF9aeEkOd7VN7S7-wa11_Ng1tw9Q5MJzAT7E7PCv7miQPXdM7GFvV-lZuS9sHbU2dgCKlvVl3tCW0uI0La9tBzAVPas5r2es5kz37sVFRo-PKnlJrdvvz0GEZ0ZB8v8CbIyclTRlVALOReu9PCQXGQ9Pgxhq-_A-s7k0Brwt624ByFlEe0pgS2K1fYSYFZ43OhIzE67aHaD7oxlfDd5jSrVrHDTpyAJHoizmYsYg7EEtV58kGXe1grSLjEaj8DzLzHNRkcj6Rdmo1p0LGejI3jMyBw3eT0bgaUDKG4ggN8X6eio5g0Zj9QNN31T1wyWuBgdfR99Gx09f7b7bH9_7-DZy_2D_ReHB-PR_eho_5fD3YNXhy9fvfxl7-Xzg_3Dw4fx6F_GAH9v9_Bw79WLvRfPnu_vPd97dfBCrvannFSLE2nPF_qesPh5-D_Ydj2w</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,732 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Cahier de conception</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8aba9439-3994-4465-940e-e24b8e996d4c" class="page sans"><header><h1 class="page-title">Cahier de conception</h1><p class="page-description"></p></header><div class="page-body"><p id="d04d1b90-405e-4e5e-b001-f6de5ce4624c" class="">
+</p><p id="8bd0fbc4-b61a-443b-afe7-8d834e2c90ba" class="">Choix technos : <div class="indented"><p id="4c358aba-a623-4504-a522-b75f9e0a9cfd" class="">Les trois principaux outils de gestion de projet que nous avons utilisés sont GitHub, Notion et Discord. Notion et Discord étaient utilisés pour la répartition des tâches, tandis que GitHub était utilisé pour que chaque membre du groupe puisse travailler sur sa partie tout en s’assurant de pouvoir tout regrouper en un seul projet. En ce qui concerne les outils prévisionnels, un diagramme de classe ainsi qu’un diagramme de Gantt préventifs ont été réalisés grâce à Mermaid. Le Diagramme de classe final a été réalisé avec Astah .</p><p id="4c9e3f12-d398-4b6a-8411-42eca833cbad" class="">
+</p><p id="25b33452-8123-4ca7-b82b-b0d595e15e1c" class="">Pour ce qui concerne les outils utilisés propres au code, nous avons choisi de travailler sur la version JDK 8 pour que le code soit compatible avec les machines du département informatique. En ce qui concerne l’interface graphique, nous avons choisi d’utiliser Swing, jugeant qu’un aspect graphique élaboré n’était pas la priorité. Enfin, en ce qui concerne le choix quant au stockage des données, nous avons décidé d’utiliser une base de données SQLite pour limiter le stockage nécessaire à la sauvegarde continue de l’historique des coups du joueur.</p></div></p><p id="a856e989-4520-4666-afc7-77e52d4fc4d7" class="">
+</p><p id="cc717435-c532-44b3-9a97-c25b2d71e54e" class="">Conception :</p><p id="235b4f9d-1b5b-442a-9642-833a3377b44e" class=""><div class="indented"><p id="2e441c5f-d07e-4d9e-aeb1-f673a443af1e" class="">Partie Jeu : *expliquer comment le jeu est implémenté et comment il fonctionne avec visuels*</p><p id="d790eeed-c3a6-44b4-b631-7ff94e55732b" class="">
+</p><p id="88f949a1-0b7b-4b76-b24d-3d5a438bcea2" class="">
+</p><p id="656d4f10-bd4c-4eaa-a14f-ded8c12aa1dc" class="">Partie Techniques et Aide : Pour commencer, il a fallu se pencher sur les techniques que nous souhaitions implémenter et comment nous pourrions proposer une aide à la résolution de la grille de Hashi au joueur. Chaque technique a son propre algorithme qui permet de tester, pour une île donnée, si la technique est applicable en fonction de l’état actuel de la grille. </p><p id="616d5718-fc26-4a6c-9391-73464a7df385" class="">L’algorithme d’aide consiste à parcourir la grille d’île en île, puis pour chaque île de parcourir la liste des techniques pour vérifier si l’une d’elle est applicable sur l’île en question. Les techniques sont parcourues dans un ordre croissant en terme de difficulté d’application. Ainsi lorsqu’on identifie une technique qui peut être utilisée, on évitera de vérifier les techniques de difficultés égales ou supérieures dans la suite du déroulement de l’algorithme d’aide, afin de gagner du temps.</p><p id="d2f5f4ae-d378-4ce3-bfec-65c2e4e523af" class="">De plus, chaque grille conserve en mémoire le nombre de fois que le bouton d’aide à été pressé d’affilé sans poser de nouveaux ponts. De cette manière, l’algorithme d’aide peut donner des indices de plus en plus précis à chaque nouvelle pression du bouton d’aide. La première pression indique simplement le nom de la technique à utiliser, tandis que la quatrième pression indique l’île exacte où la technique peut être appliquée.</p><p id="25236201-2b5c-45fa-91d5-b6021474f1b4" class="">
+</p><p id="3c572b56-8c44-4dbe-b3a5-72c4b1edd622" class="">
+</p><p id="a3d3214d-f761-496c-a965-02135246defd" class="">Partie Profils : Pour commencer, le but des profils est de permettre à plusieurs personnes de joue au jeu sur le même appareil, en rendant leur progression séparé pour garder une meilleure expérience de jeu et permettre à chaque personne de découvrir soit même le jeu . Pour ce faire, quand le jeu est lancé , nous avons la possibilité de créer un Profil. Un Profil est juste représenté par un nom, ce nom doit faire moins / ou 10 caractères , il doit être unique et ne pas commencer par  un espace .  Si le nom est correct, il est enregistré dans la base de donnée et sera utiliser pour les sauvegardes de grilles et de statistique, ce qui permettra de recharger son profil plus tard . </p></div></p><p id="9b0337e1-0d56-4cd8-a608-009bbf18550e" class="">
+</p><p id="40bfa10e-1f3b-4ed4-82d4-3469f2661162" class="">
+</p><p id="401eb5ea-0d51-4ddc-8fdc-e1293507d4ac" class="">Mode de Jeu :<div class="indented"><p id="449c989a-20e2-4b3e-aafc-427ecbfdad55" class=""><span style="border-bottom:0.05em solid">Aventure </span>: Le mode aventure propose au joueur une suite de grilles à compléter. Chaque grille se débloque l’une après l’autre (la deuxième grille se débloque après avoir complété la première et ainsi de suite).</p><p id="c5254da1-8293-4007-8fb6-0b3ed78666e0" class="">
+</p><p id="397fa2cb-fcfa-44bf-8d5a-50e366a97f7d" class=""><span style="border-bottom:0.05em solid">Mode Libre :</span> Le mode libre propose au joueur une liste de grilles de difficulté variée. Le joueur peut choisir parmi les niveaux de difficulté facile, moyen et difficile. Ce mode donne accès à toutes les grilles dès le début.</p><p id="253884c9-86c3-449e-b667-611636c67bd1" class="">
+</p><p id="d9924ddc-dc40-4010-bc59-1966521e3c40" class=""><span style="border-bottom:0.05em solid">Tutoriel :</span> À la création d’un profil, le jeu va proposer un mode tutoriel pour se familiariser avec les règles du Hashi. Ce tutoriel n’est pas obligatoire, de cette façon, les joueurs déjà expérimentés qui créent un nouveau profil ne sont pas obligés de le faire. Le tutoriel reste aussi accessible pour tous les joueurs dans le menu principal (même s&#x27;il a déjà été complété).</p></div></p><p id="597fe10f-26ac-4c18-80bb-6e8451e8e607" class="">
+</p><p id="1bf89f3a-b09e-489a-b700-92e13a388104" class="">Description des classes et des interfaces via des diagrammes de classes :<div class="indented"><p id="30d33118-f5b3-4e4a-a680-e9cd2b5d57eb" class="">Diagramme de classes du noyau du jeu :</p><figure id="209a4180-bfc8-498e-98ca-4aeb3c0f8200" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/JEU.png"><img style="width:3116px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/JEU.png"/></a></figure></div></p><p id="03955610-850a-4526-ba6e-9c3a9fe37eac" class=""><div class="indented"><p id="54ed060e-1168-4501-9806-0b4491499b45" class="">Diagramme de classes de la base de données :</p><figure id="78895b53-ad22-4bad-ac60-38054fe13378" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/digram_class_bdd.png"><img style="width:331px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/digram_class_bdd.png"/></a></figure><p id="e4bcb880-3f0c-4975-8c9e-8311993f4126" class="">Diagramme de classes des filtres :</p><figure id="83554878-90f0-4d1c-9caf-4fb489dcd1ce" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Filtre.png"><img style="width:465px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Filtre.png"/></a></figure><p id="07df251e-d552-4938-af3e-bdca2f0df61a" class="">
+</p><p id="5a59edcc-e0a9-4a9a-81b5-785535e8cf6e" class="">Diagramme de classes de l’historique :</p><figure id="0325a625-08ff-42b6-b383-8b7d28bf9608" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/historique.png"><img style="width:480px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/historique.png"/></a></figure><p id="7a434916-3407-4732-bc4f-8fa2fc261fe1" class="">Diagramme de classes identifiable :</p><figure id="fec60d80-4ecf-4877-bae1-a6957f02e12d" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/identifiable.png"><img style="width:2566px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/identifiable.png"/></a></figure><p id="8cd77dc3-e63c-4b14-8ed3-972b971528e1" class="">Diagramme de classes de la sauvegarde :</p><figure id="83a0a108-17f7-45f3-842b-9aefa7dbeb56" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Sauvegarde.png"><img style="width:465px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Sauvegarde.png"/></a></figure><p id="3c380f02-8a2e-491f-942a-37236d330ebe" class="">
+</p><p id="a68c5b1b-bc09-4690-a0f5-a4090f574965" class="">Diagramme de classes des éléments indépendants ou quasi indépendants :</p><figure id="b21f37c6-582b-401a-a87b-e0ba0ca66086" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/classe_seul.png"><img style="width:984px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/classe_seul.png"/></a></figure><p id="629ca3cc-4888-4617-8406-cbc968822db3" class="">Diagramme de classes des thèmes :</p><figure id="39e246f6-e6dc-4578-873d-67d5042e3266" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/theme.png"><img style="width:528px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/theme.png"/></a></figure><p id="56443415-b11b-41b8-a48d-6c89e5984168" class="">
+</p><p id="2101e5e3-01e8-4aca-b5ef-6735a26cbff5" class="">Diagramme de classes du stockage :</p><figure id="dfdf5e49-53b4-4c1d-967a-04fdfc38387c" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Stockage.png"><img style="width:708px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/Stockage.png"/></a></figure><p id="30440c73-a1ff-4ec5-832f-c44b65e1b667" class="">Diagramme de classes du Component :</p><figure id="7951d4b6-6a27-4ee9-93ff-c7934a280d21" class="image"><a href="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/GameComponent.png"><img style="width:962px" src="Cahier%20de%20conception%208aba943939944465940ee24b8e996d4c/GameComponent.png"/></a></figure></div></p><p id="2348df63-0ce9-4d93-aaf8-d12e1d0954eb" class="">Description et répartition des tâches :<div class="indented"><p id="b144a047-6a98-4e9f-b6f7-1acb5130bfa6" class="">Tâches :</p><ul id="e668f261-33c2-4cd2-8daa-1d47161086ed" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Interface et menus :</span> Nous devions réaliser une interface ergonomique, cohérente et compréhensible. </li></ul><ul id="37c93efc-4330-4914-a185-d2d116e37dd6" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Noyau du jeu :</span> Nous devions réaliser un jeu fonctionnel. Cette tâche était étroitement liée à l’interface, car la fonctionnalité de jeu principale, la pose des ponts, est liée avec l’affichage de ces mêmes ponts.</li></ul><ul id="66269c72-b6bc-4ee5-bd95-b48cbf748490" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Implémentation des techniques :</span> Nous devions faire un algorithme pour chaque technique que nous avions sélectionné. Les différents algorithmes sont capables de détecter, sur une île donnée, si la technique est applicable.</li></ul><ul id="1f01071b-d47b-4853-afe6-d1a4d96d25a9" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Base de données :</span> Nous devions créer une base de données pour stocker les grilles, les historiques de ces grilles et les profils utilisateur.</li></ul><p id="9f2c0563-89b2-47a0-83ba-773dd5be9971" class="">
+</p><p id="83844e23-30b4-475d-b627-69db86c329f0" class="">Répartition :</p><ul id="bb2b600b-c012-4fd5-a52b-f159e5e2bb1e" class="bulleted-list"><li style="list-style-type:disc">Arthur DUREAU, Antoine TEISSIER, Henzo AGEORGES, Ilyas ABID et Elie DELETANG se sont occupé de l’interface</li></ul><ul id="2d61e5a0-5d32-4bbc-a74f-e82a9934cd57" class="bulleted-list"><li style="list-style-type:disc">Damien BOULANGER s’est occupé de l’implémentation des algorithmes pour l’aide en général et pour chaque technique d’aide</li></ul><ul id="c4870144-69b4-4f12-81af-12010f862371" class="bulleted-list"><li style="list-style-type:disc">Lucas BARBET et Kilian PATAULT se sont occupé de la base de données</li></ul><ul id="703fa5eb-ea42-4a8e-8c02-7c2c76e8d4f1" class="bulleted-list"><li style="list-style-type:disc">Antoine SAINTY s’est occupé du noyau du jeu</li></ul></div></p><p id="3e470d73-3e26-4907-a2ed-211548dc5ebe" class="">
+</p><p id="096d465f-3ed2-4693-9761-1538c45d1e76" class="">Diagramme de Gantt :</p><figure id="d196b330-5108-4f3c-a3c4-9a7acaecb9ad"><div class="source"><a href="https://www.notion.soundefined"></a></div></figure><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f899bd1f-b0aa-49a9-ba82-ccfcc604f23c" class="code"><code class="language-Mermaid">gantt
+    title Diagramme de Gantt effectif
+    dateFormat  DD/MM/YYYY
+    section Definition
+        Definition des besoins       :def1, 08/01/2024, 1w
+        Cahier des charges           :def2, 11/01/2024, 2w
+				Rendez-vous avec les clients :milestone, 15/01/2024
+				Remise de la V1 du cahier des charges :milestone, 06/02/2024
+    section Conception
+        Dossier de conception   :con1, after def2, 1w
+    section Réalisation
+				Fonctionnalités principales :rea1, after con1, 4w
+				Interface               :rea2, after con1, 19/03/2024
+				Noyau du jeu            :rea3, 08/02/2024, 13/03/2024
+				Sauvegarde &amp; chargement         :rea4, 15/02/2024, 11/03/2024
+
+				Fonctionalités secondaires :rea8, after rea1, 3w
+        Profils                    :rea9, after rea1, 1w
+        Modes de jeu            :rea5, after rea4, 2w
+				Tests unitaires            :rea12, 13/03/2024, 2.5w
+		section Cahier de conception
+		    Cahier de conception :con2, 19/03/2024, 1w
+    section Manuel d&#x27;utilisateur
+        Manuel d&#x27;utilisateur :man1, after con2, 3d
+    section Préparation de l&#x27;oral
+        Préparation du diapo   :ora1, after man1, 16/04/2024
+        Préparation des textes :ora2, after man1, 16/04/2024
+				Oral                   :milestone, 16/04/2024</code></pre><p id="ad18caa7-f39b-475e-a918-66ad08db2ea8" class="">
+</p><p id="e3f828ba-44a5-446d-aefc-790da7863b64" class="">Tests, Intégration :<div class="indented"><p id="00dea2ec-e4a4-4bf2-be18-e5bbed06ab3f" class="">Pour s’assurer du bon fonctionnement de notre projet, nous avons fait des tests unitaires sur chacun de nos algorithmes. Prenons un test unitaire sur un algorithme de technique comme exemple : le test va créer une grille avec des îles placées de telle sorte qu’elles soient les plus intéressantes pour une technique donnée, puis l’algorithme va être testé sur différentes îles de la grille. Cela permet de vérifier que l’algorithme identifie correctement sur quelle île la technique s’applique.</p></div></p><p id="eed4c48d-56cb-431b-abb6-db5c3d156a92" class="">
+</p><p id="70555bf3-98c3-4c49-8de0-e9a5333b683d" class="">Difficultés rencontrées : <div class="indented"><p id="5ae68eec-bc1c-4e0f-a3c8-549a3962a39c" class="">La principale difficulté a été l’organisation du groupe, principalement au début du projet. Une fois que tout le monde avait une tâche attribuée, le projet a avancé rapidement.</p><p id="0207bb19-be60-41ec-b2ff-ac0187612902" class="">
+</p><p id="dcc70320-471e-4775-9df7-64f6894d07ba" class="">
+</p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
