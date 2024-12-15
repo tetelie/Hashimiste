@@ -21,9 +21,3 @@ PATAULT Kylian
 SAINTY Antoine
 
 TEISSIER Antoine
-
-
-# Intégrer une page HTML
-
-[Manuel Utilisateur](file:///Users/maisondeletang/IdeaProjects/Hashimiste/Manuel%20utilisateur/Manuel%20Utilisateur%20de%20Hashimiste%2013fc0363cd6a4d0e9f4e912ecabb2249.html)
-
